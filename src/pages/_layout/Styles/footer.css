@@ -1,11 +1,11 @@
 footer {
   width: 100%;
   padding-top: 30px;
-  background-color: lightblue;
+  background-color: rgb(214, 246, 255);
   color: white;
   background-position: initial;
   position: relative;
-  
+  color: black;
 }
 
 .generalInfoF{
@@ -15,20 +15,17 @@ footer {
 }
 
 .socialNetworks{
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
 
 .socialNetworkImgs{
-  display: flex;
+  display: grid;
   justify-content: center;
+  align-items: center;
 }
 
-footer a {
-  color: black;
-  text-decoration: none;
-}
 
 footer a:hover,
 footer a:focus {
@@ -37,14 +34,6 @@ footer a:focus {
   border-bottom: 1px dotted #999;
 }
 
-footer .form-control {
-  background-color: white;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-  border: none;
-  resize: none;
-  color: black;
-  padding: 0.7em 1em;
-}
 
 .footer {
   margin-left: 20px;
@@ -71,9 +60,6 @@ footer .form-control {
   box-shadow: none;
 }
 
-#btnSend {
-  background-color: antiquewhite;
-}
 
 .socialNetworkImg {
   background-color: rgba(255, 255, 255, 0.21);

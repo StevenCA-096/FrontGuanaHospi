@@ -2,9 +2,11 @@ import { Outlet } from 'react-router-dom'
 import Header from './Header';
 import { Link } from 'react-router-dom';
 //import '../../Styles/footer.css'
-import { Row, Col, Container,Button} from 'react-bootstrap';
+import { Row, Col, Container} from 'react-bootstrap';
+import { Button } from '@mui/material';
 import styles from './layout.css'
 import './Styles/footer.css'
+
 export const Layout = () => {
   return (
     <>
@@ -13,7 +15,6 @@ export const Layout = () => {
         <div className='navbar-side'>
           <Header />
         </div>
-
         <div className='main-content'>
           <main>
             <Outlet />
@@ -35,7 +36,7 @@ export const Layout = () => {
                 </Col>
               </Row>
               <Row className='socialNetworks'>
-                <Col md="4">
+                <Col>
                   <h5>Nuestras redes sociales</h5>
                 </Col>
               </Row>
@@ -43,13 +44,9 @@ export const Layout = () => {
               <Row className='socialNetworkImgs'>
                 <Col>
                   <img src="" alt="" className='socialNetworkImg' />
-                </Col>
-
-                <Col>
+                
                   <img src="" alt="" className='socialNetworkImg' />
-                </Col>
-
-                <Col>
+                
                   <img src="" alt="" className='socialNetworkImg' />
                 </Col>
               </Row>

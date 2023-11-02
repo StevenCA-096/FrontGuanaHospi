@@ -23,14 +23,14 @@ export const deleteillness = async (id) => {
     return data;
 };
 
-export const updateillness = async (illness) => { 
-    console.log(illness)
-    const id = illness.id;
-    let illnessEdit = {
-        name: illness.name,
-    }
+export const updateillnessSer = async (illness) => { 
+    // console.log(illness)
+    // const id = illness.id;
+    // let illnessEdit = {
+    //     name: illness.name,
+    // }
 
-    let data = await api.put(`Enfermedad/${id}`,illnessEdit).then(result => result.data);
+    let data = await api.put('Enfermedad',illness).then(result => result.data);
     
     return data;
 };

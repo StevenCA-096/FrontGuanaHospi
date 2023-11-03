@@ -35,7 +35,7 @@ export const menuItems = [
         submenu: [
             {
                 title: 'Intervenciones',
-                url: '/listDoctors'
+                url: '/listIntervention'
             },
             {
                 title: 'Tipos de intervenciones',

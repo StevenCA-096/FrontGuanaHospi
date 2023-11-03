@@ -80,7 +80,7 @@ const listSymptom = () => {
                     <tr key={symptom.iD_Sintoma}>
                       <td>{symptom.iD_Sintoma}</td>
                       <td>{symptom.nombre}</td>
-                      <td><Button size='sm' variant='danger' onClick={() => showDeleteWaring(symptom.iD_Sintoma)}>Eliminar</Button></td>
+                      <td><Button size='smv' variant='danger' onClick={() => showDeleteWaring(symptom.iD_Sintoma)}>Eliminar</Button></td>
                     </tr>
                   )
                 ):(console.log("wait"))

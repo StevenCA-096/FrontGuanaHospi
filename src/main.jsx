@@ -9,7 +9,7 @@ import ListUnits from './pages/management/unit/listUnits'
 import ListSymptom from './pages/management/symptom/listSymptom'
 import UserProfile from './pages/user/userProfile'
 import { QueryClient,QueryClientProvider } from 'react-query'
-
+import ListIntervention from './pages/attention/intervention/listIntervention.jsx'
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/listIlness" element={<ListIllness />}/>
       <Route path="/listUnits" element={<ListUnits />}/>
       <Route path="/listSymptoms" element={<ListSymptom />}/>
+      <Route path="/listIntervention" element={<ListIntervention />}/>
 
 
       <Route path="/userProfile" element={<UserProfile />}/>

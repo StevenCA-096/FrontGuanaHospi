@@ -23,14 +23,10 @@ export const deleteDoctor = async (id) => {
     return data;
 };
 
-export const updateDoctor = async (doctor) => { 
-    console.log(doctor)
-    const id = doctor.id;
-    let doctorEdit = {
-        name: doctor.name,
-    }
+export const updateDoctorS = async (doctorEdit) => { 
+   
 
-    let data = await api.put(`doctor/${id}`,doctorEdit).then(result => result.data);
+    let data = await api.put('doctor',doctorEdit).then(result => result.data);
     
     return data;
 };

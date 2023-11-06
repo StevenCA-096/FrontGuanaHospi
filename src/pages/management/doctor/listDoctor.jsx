@@ -6,11 +6,11 @@ import AddDoctor from './actions/addDoctor'
 import UpdateDoctorModal from './actions/updateDoctor'
 import Swal from 'sweetalert2'
 const ListDoctor = () => {
-  // const {doctors,doctorsLoading,doctorsError} = useQuery('doctor',getDoctors)
+   const {data,isLoading,isError} = useQuery('doctor',getDoctors)
 
-  // if(doctors){
-  //   console.log(doctors)
-  // }
+  if(data){
+    console.log(data)
+  }
   
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -59,12 +59,11 @@ const ListDoctor = () => {
     <>
       <Container>
         <Row>
-          <h1 className="text-center">Lista de enfermedades</h1>
+          <h1 className="text-center">Lista de doctores</h1>
         </Row>
 
         <Row>
           <AddDoctor/>
-          <UpdateDoctorModal/>
         </Row>
         <Row>
           <Table striped  variant='light'>
@@ -80,7 +79,25 @@ const ListDoctor = () => {
               </tr>        
             </thead>
             <tbody>
-              <Button onClick={showDeleteWaring}>Eliminar</Button>
+              {
+                data?(
+                  data.map((doctor) => 
+                    <tr key={doctor.iD_Doctor}>
+                        <td>{doctor.iD_Doctor}</td>
+                        <td>{doctor.codigo}</td>
+                        <td>{doctor.nombreD}</td>
+                        <td>{doctor.apellido1}</td>
+                        <td>{doctor.apellido2}</td>
+                        <td>{doctor.especialidad.nombreE}</td>
+                        <td>
+                          <Button onClick={()=>showDeleteWaring(doctor.iD_Doctor)} size='sm' variant='danger'>Eliminar</Button>
+                          <UpdateDoctorModal props={doctor}/>
+                        </td>
+                    </tr>
+                  )
+                ):("Cargando...")
+              }
+              
             </tbody>
           </Table>
         </Row>

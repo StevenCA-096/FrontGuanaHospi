@@ -1,0 +1,24 @@
+.loginImg{
+    width: 500px;
+    height: 300px;
+
+}
+
+.loginContainer{
+    display: grid;
+    border: 10px;
+    border-color: azure;
+    border-radius: 2%;
+    box-shadow: 40px;
+    border-style: solid;
+    background-color: aliceblue;
+}
+
+.btnLogin{
+    margin-top: 10px;
+}
+
+.imgLoginContainer,.formContainer{
+    margin: 2px;
+    padding: 2px;
+}

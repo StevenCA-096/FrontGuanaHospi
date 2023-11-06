@@ -15,18 +15,18 @@ export const menuItems = [
                 title: 'Unidades',
                 url: '/listUnits',
             },
-            {
-                title: 'Enfermedads',
-                url: '/listIlness',
-            },
-            {
-                title: 'Sintomas',
-                url: '/listSymptoms',
-            },
-            {
-                title: 'Especialidad',
-                url: '/listSymptoms',
-            },
+            // {
+            //     title: 'Enfermedads',
+            //     url: '/listIlness',
+            // },
+            // {
+            //     title: 'Sintomas',
+            //     url: '/listSymptoms',
+            // },
+            // {
+            //     title: 'Especialidad',
+            //     url: '/listSymptoms',
+            // },
             
         ],
     },
@@ -37,14 +37,14 @@ export const menuItems = [
                 title: 'Intervenciones',
                 url: '/listIntervention'
             },
-            {
-                title: 'Tipos de intervenciones',
-                url: '/listDoctors'
-            },
-            {
-                title: 'Pacientes',
-                url: '/listUnits',
-            },
+            // {
+            //     title: 'Tipos de intervenciones',
+            //     url: '/listDoctors'
+            // },
+            // {
+            //     title: 'Pacientes',
+            //     url: '/listUnits',
+            // },
             {
                 title: 'Ingresar Paciente',
                 url: '/listIlness',
@@ -53,8 +53,8 @@ export const menuItems = [
         ],
     },
     {
-        title: 'Perfil',
-        url: '/userProfile',
+        title: 'Iniciar sesion',
+        url: '/login',
     },
 
 ]

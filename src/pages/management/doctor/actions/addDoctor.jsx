@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import { getSpecialities } from '../../../../services/specialityService';
 import { createDoctor } from '../../../../services/doctorService';
 import { useMutation,QueryClient } from 'react-query';
+import Swal from 'sweetalert2';
 const addDoctor = () => {
     const queryClient = new QueryClient();
     const [show, setShow] = useState(false);
@@ -19,9 +20,7 @@ const addDoctor = () => {
     const lastname2 = useRef();
 
     const {data,isLoading,isError} = useQuery('especialidad',getSpecialities)
-    if (data) {
-        console.log(data)
-    }
+
 
     let optionsSelect = []
     if (data) {
@@ -70,7 +69,7 @@ const addDoctor = () => {
                 Apellido2: lastname2.current.value,
                 iD_Especialidad: idSpeciality
             }
-            console.log(newDoctor)
+            createDoctorMutation.mutateAsync(newDoctor);
         }else{
             setIsValid(false)
         }

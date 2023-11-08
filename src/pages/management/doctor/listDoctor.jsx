@@ -90,8 +90,8 @@ const ListDoctor = () => {
                         <td>{doctor.apellido2}</td>
                         <td>{doctor.especialidad.nombreE}</td>
                         <td>
-                          <Button onClick={()=>showDeleteWaring(doctor.iD_Doctor)} size='sm' variant='danger'>Eliminar</Button>
                           <UpdateDoctorModal props={doctor}/>
+                          <Button onClick={()=>showDeleteWaring(doctor.iD_Doctor)} size='sm' variant='danger'>Eliminar</Button>
                         </td>
                     </tr>
                   )

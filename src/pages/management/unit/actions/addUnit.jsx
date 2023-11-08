@@ -53,6 +53,21 @@ const addUnit = () => {
         }
         createUnitMutation.mutateAsync(newUnit);
     }
+
+    const optionsFloor = [
+        {
+            value: 1,
+            label: 'Piso 1',
+        },
+        {
+            value: 2,
+            label: 'Piso 2',
+        },
+        {
+            value: 3,
+            label: 'Piso 3',
+        },
+    ]
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
@@ -87,7 +102,7 @@ const addUnit = () => {
                             <Form.Label>Planta</Form.Label>
                             <Select
                                 placeholder='Seleccione la planta'
-
+                                options={optionsFloor}
                             >
                             </Select>
                         </Form.Group>

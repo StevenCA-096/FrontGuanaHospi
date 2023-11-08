@@ -14,7 +14,7 @@ export const getDoctorById = async (id,state) => {
 };
 
 export const createDoctor = async (doctor) => { 
-    let data = await api.post('doctor',doctor).then(result => result.data);
+    let data = await api.post(`doctor?id=${1}`,doctor).then(result => result.data);
     return data;
 };
 
@@ -33,7 +33,7 @@ export const updateDoctorS = async (doctorEdit) => {
         iD_Especialidad:doctorEdit.iD_Especialidad
     }
 
-    let data = await api.put(`doctor/${doctorEdit.id}`,doctorToApi).then(result => result.data);
+    let data = await api.put(`doctor${doctorEdit.id}`,doctorToApi).then(result => result.data);
     
 
     return data;

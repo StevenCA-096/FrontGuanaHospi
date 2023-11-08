@@ -1,3 +1,69 @@
+export const menuItemsLogged = [
+    {
+        title: 'Inicio',
+        url: '/',
+    },
+    {
+        title: 'Gestion',
+        submenu: [
+            {
+                title: 'Doctores',
+                url: '/listDoctors'
+            },
+            {
+                title: 'Unidades',
+                url: '/listUnits',
+            },
+            // {
+            //     title: 'Enfermedads',
+            //     url: '/listIlness',
+            // },
+            // {
+            //     title: 'Sintomas',
+            //     url: '/listSymptoms',
+            // },
+            // {
+            //     title: 'Especialidad',
+            //     url: '/listSymptoms',
+            // },
+            
+        ],
+    },
+    {
+        title: 'Atencion',
+        submenu: [
+            {
+                title: 'Intervenciones',
+                url: '/listIntervention'
+            },
+            // {
+            //     title: 'Tipos de intervenciones',
+            //     url: '/listDoctors'
+            // },
+            // {
+            //     title: 'Pacientes',
+            //     url: '/listUnits',
+            // },
+            {
+                title: 'Pacientes',
+                url: '/listPatient',
+            },
+            {
+                title: 'Ingresar Paciente',
+                url: '/listPatient',
+            },
+        ],
+    },
+    {
+        title: 'Reportes',
+        url: '/login',
+    },
+    {
+        title: 'Perfil',
+        url: '/userProfile',
+    },
+
+]
 
 export const menuItems = [
     {
@@ -46,11 +112,18 @@ export const menuItems = [
             //     url: '/listUnits',
             // },
             {
-                title: 'Ingresar Paciente',
-                url: '/listIlness',
+                title: 'Pacientes',
+                url: '/listPatient',
             },
-            
+            {
+                title: 'Ingresar Paciente',
+                url: '/listPatient',
+            },
         ],
+    },
+    {
+        title: 'Reportes',
+        url: '/login',
     },
     {
         title: 'Iniciar sesion',

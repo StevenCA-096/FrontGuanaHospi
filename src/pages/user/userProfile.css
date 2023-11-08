@@ -1,0 +1,9 @@
+.userLogo{
+    width: 100px;
+    height: 120px;
+}
+.cardProfileContainer{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}

@@ -15,13 +15,13 @@ const updateUnit = (props) => {
     const handleShow = () => setShow(true);
 
     const [isValid, SetIsValid] = useState();
-    
+
     const [unit, setUnit] = useState();
-    
-    const open = ()=>{setUnit(props.props);handleShow();}
+
+    const open = () => { setUnit(props.props); handleShow(); }
     console.log(props)
-    
-    const {data,isLoading,isError} = useQuery('doctor',getDoctors)
+
+    const { data, isLoading, isError } = useQuery('doctor', getDoctors)
 
     const checkValidity = (textTest) => {
 
@@ -36,7 +36,7 @@ const updateUnit = (props) => {
     if (data) {
         optionsSelect = data.map((doctor) => ({
             value: doctor.iD_Doctor,
-            label: doctor.nombreD + " " +doctor.apellido1
+            label: doctor.nombreD + " " + doctor.apellido1
         }));
     }
 
@@ -44,7 +44,6 @@ const updateUnit = (props) => {
     const name = useRef()
     const floorNumber = useRef()
     const [idDoctor, setIdDoctor] = useState()
-
 
     const updateUnitMutation = useMutation("unidad", updateUnitS,
         {
@@ -65,14 +64,32 @@ const updateUnit = (props) => {
     const saveChanges = () => {
         let editUnit = {
             id: unit.iD_Unidad,
-            codigo:code.current.value,
-            nombre:name.current.value,
-            planta:floorNumber.current.value,
-            iD_Doctor : idDoctor
+            codigo: code.current.value,
+            nombre: name.current.value,
+            planta: floorNumber.current.value,
+            iD_Doctor: idDoctor
         }
         updateUnitMutation.mutateAsync(editUnit)
     }
 
+    const optionsFloor = [
+        {
+            value: 1,
+            label: 'Piso 1',
+        },
+        {
+            value: 2,
+            label: 'Piso 2',
+        },
+        {
+            value: 3,
+            label: 'Piso 3',
+        },
+    ]
+
+    if (unit) {
+        setIdDoctor(unit.planta)
+    }
     return (
         <>
             <Button variant="primary" onClick={open} size='sm'>
@@ -89,6 +106,7 @@ const updateUnit = (props) => {
                     <Modal.Title>Actualizar</Modal.Title>
                 </Modal.Header>
                 {unit ? (
+                    
                     <Modal.Body>
                         <Form>
                             <Row className="mb-3">
@@ -101,15 +119,18 @@ const updateUnit = (props) => {
                                     <Form.Label>Nombre</Form.Label>
                                     <Form.Control
                                         defaultValue={unit.nombre}
-                                        type="text" placeholder="Ingrese el nombre" ref={name}/>
+                                        type="text" placeholder="Ingrese el nombre" ref={name} />
                                 </Form.Group>
                             </Row>
                             <Row className="mb-3">
-                                <Form.Group as={Col} controlId="formGridEmail">
+                                <Form.Group className="mb-3" controlId="formGridAddress1" ref={floorNumber}>
                                     <Form.Label>Planta</Form.Label>
-                                    <Form.Control
-                                        defaultValue={unit.planta}
-                                        type="number" placeholder="Ingrese el la planta" ref={floorNumber} onChange={() => checkValidity(floorNumber.current.value)} />
+                                    <Select
+                                        placeholder='Seleccione la planta'
+                                        options={optionsFloor}
+                                        
+                                    >
+                                    </Select>
                                 </Form.Group>
 
                             </Row>
@@ -120,10 +141,10 @@ const updateUnit = (props) => {
                                     placeholder='Seleccione el doctor'
                                     options={optionsSelect}
                                     onChange={(selected) => setIdDoctor(selected.value)}
-                                   
+
                                 ></Select>
                             </Form.Group>
-                            
+
                             {
                                 isValid == false ? (
                                     <Alert variant={'danger'}>

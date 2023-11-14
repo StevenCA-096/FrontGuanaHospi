@@ -1,4 +1,5 @@
 import api from "../api/api";
+import { getIdUser } from "./getUserId";
 
 export const getIntervention = async () => { 
     let data = await api.get('Intervencion').then(result => result.data);
@@ -19,7 +20,7 @@ export const createIntervention = async (Intervention) => {
 };
 
 export const deleteIntervention = async (id) => { 
-    let data = await api.delete(`Intervencion?/${id}`);
+    let data = await api.delete(`Intervencion?id=${id}&idUsuario=${getIdUser()}`);
     return data;
 };
 

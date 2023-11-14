@@ -19,7 +19,7 @@ export const createDoctor = async (doctor) => {
 };
 
 export const deleteDoctor = async (id) => { 
-    let data = await api.delete(`doctor/${id}`);
+    let data = await api.delete(`doctor/${id}?idUsuario=${getIdUser()}`);
     return data;
 };
 

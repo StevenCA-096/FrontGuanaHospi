@@ -70,61 +70,7 @@ export const menuItems = [
         title: 'Inicio',
         url: '/',
     },
-    {
-        title: 'Gestion',
-        submenu: [
-            {
-                title: 'Doctores',
-                url: '/listDoctors'
-            },
-            {
-                title: 'Unidades',
-                url: '/listUnits',
-            },
-            // {
-            //     title: 'Enfermedads',
-            //     url: '/listIlness',
-            // },
-            // {
-            //     title: 'Sintomas',
-            //     url: '/listSymptoms',
-            // },
-            // {
-            //     title: 'Especialidad',
-            //     url: '/listSymptoms',
-            // },
-            
-        ],
-    },
-    {
-        title: 'Atencion',
-        submenu: [
-            {
-                title: 'Intervenciones',
-                url: '/listIntervention'
-            },
-            // {
-            //     title: 'Tipos de intervenciones',
-            //     url: '/listDoctors'
-            // },
-            // {
-            //     title: 'Pacientes',
-            //     url: '/listUnits',
-            // },
-            {
-                title: 'Pacientes',
-                url: '/listPatient',
-            },
-            {
-                title: 'Ingresar Paciente',
-                url: '/listPatient',
-            },
-        ],
-    },
-    {
-        title: 'Reportes',
-        url: '/login',
-    },
+    
     {
         title: 'Iniciar sesion',
         url: '/login',

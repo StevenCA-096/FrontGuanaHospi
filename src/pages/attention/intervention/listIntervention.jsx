@@ -3,8 +3,14 @@ import { Container, Row, Col, Button, Table } from 'react-bootstrap'
 import { deleteIntervention } from '../../../services/interventionService'
 import Swal from 'sweetalert2'
 import AddIntervention from './actions/addIntervention'
+import { useQuery } from 'react-query'
+import { getIntervention } from '../../../services/interventionService'
+import './listIntervention.css'
 const listIntervention = () => {
-
+    const {data,isLoading,isError} = useQuery('Intervencion',getIntervention)
+    if (data) {
+        console.log(data)
+    }
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -58,8 +64,8 @@ const listIntervention = () => {
                     <AddIntervention/>
                 </Row>
                 <Row>
-                    <Col>
-                        <Table striped variant='light'>
+                    <Col lg={12}>
+                        <Table striped variant='light' size='sm'>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -68,11 +74,28 @@ const listIntervention = () => {
                                     <th>ENFERMEDAD</th>
                                     <th>PACIENTE ATENDIDO</th>
                                     <th>DOCTOR ENCARGADO</th>
+                                    <th>TIPO DE INTERVENCION</th>
                                     <th>ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <Button onClick={showDeleteWaring}>Eliminar</Button>
+                                {
+                                    data?(
+                                        data.map((intervention) => 
+                                        <tr key={intervention.iD_Intervencion}>
+                                            <td>{intervention.iD_Intervencion}</td>
+                                            <td>{intervention.fecha_Intervencion.toLocaleString()}</td>
+                                            <td>{intervention.prescripcion}</td>
+                                            <td>{intervention.nombreE}</td>
+                                            <td>{intervention.nombreP}</td>
+                                            <td>{intervention.nombreD}</td>
+                                            <td>{intervention.nombreTi}</td>
+                                            <td><Button variant='danger' onClick={showDeleteWaring}>Eliminar</Button></td>
+                                        </tr>
+                                        )
+                                    ):(null)
+                                }
+                                {/*  */}
                             </tbody>
                         </Table>
                     </Col>

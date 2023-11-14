@@ -14,7 +14,7 @@ export const getInterventionById = async (id,state) => {
 };
 
 export const createIntervention = async (Intervention) => { 
-    let data = await api.post('Intervencion',Intervention).then(result => result.data);
+    let data = await api.post(`Intervencion?idUsuario=${4}`,Intervention).then(result => result.data);
     return data;
 };
 

@@ -90,7 +90,7 @@ const listIntervention = () => {
                                             <td>{intervention.nombreP}</td>
                                             <td>{intervention.nombreD}</td>
                                             <td>{intervention.nombreTi}</td>
-                                            <td><Button variant='danger' onClick={showDeleteWaring}>Eliminar</Button></td>
+                                            <td><Button variant='danger' onClick={() => showDeleteWaring(intervention.iD_Intervencion)}>Eliminar</Button></td>
                                         </tr>
                                         )
                                     ):(null)

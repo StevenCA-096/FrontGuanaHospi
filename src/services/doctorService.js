@@ -1,5 +1,5 @@
 import api from "../api/api";
-
+import { getIdUser } from "./getUserId";
 export const getDoctors = async () => { 
     let data = await api.get('doctor').then(result => result.data);
     //console.log(data)
@@ -14,7 +14,7 @@ export const getDoctorById = async (id,state) => {
 };
 
 export const createDoctor = async (doctor) => { 
-    let data = await api.post(`doctor?id=${1}`,doctor).then(result => result.data);
+    let data = await api.post(`doctor?idUsuario=${getIdUser()}`,doctor).then(result => result.data);
     return data;
 };
 

@@ -2,9 +2,14 @@ import { React, useRef, useState } from 'react'
 import { Container, Row, Col, Button, Table } from 'react-bootstrap'
 import Swal from 'sweetalert2'
 import AddPatient from './actions/addPatient'
+import { useQuery } from 'react-query'
+import { getPatients } from '../../../services/patientService'
+import { getIdUser } from '../../../services/getUserId'
+import { deletePatiente } from '../../../services/patientService'
 const listPatient = () => {
-
-
+    const {data,isLoading,isError} = useQuery('paciente',getPatients)
+    
+    
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -24,7 +29,7 @@ const listPatient = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                deleteIntervention(id).then(
+                deletePatiente(id).then(
                     swalWithBootstrapButtons.fire(
                         'Eliminado!',
                         'Se elimino el registro de la intervencion fue eliminado',
@@ -65,12 +70,26 @@ const listPatient = () => {
                                     <th>PRIMER APELLIDO</th>
                                     <th>SEGUNDO APELLIDO</th>
                                     <th>EDAD</th>
-                                    <th>FECHA INGRESO</th>
                                     <th>ACCIONES</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <Button onClick={showDeleteWaring}>Eliminar</Button>
+                            <tbody> 
+                                {
+                                    data?(
+                                        data.map((patient)=>
+                                            <tr key={patient.iD_Paciente}>
+                                                <td>{patient.iD_Paciente}</td>
+                                                <td>{patient.numSeguro}</td>
+                                                <td>{patient.nombre}</td>
+                                                <td>{patient.apellido1}</td>
+                                                <td>{patient.apellido2}</td>
+                                                <td>{patient.edad}</td>
+                                                <td><Button onClick={()=>showDeleteWaring(patient.iD_Paciente)} variant='danger'>Eliminar</Button></td>
+                                            </tr>
+                                        )
+                                    ):(null)
+                                }
+                                {/* <Button onClick={showDeleteWaring}>Eliminar</Button> */}
                             </tbody>
                         </Table>
                     </Col>

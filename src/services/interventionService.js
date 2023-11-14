@@ -19,7 +19,7 @@ export const createIntervention = async (Intervention) => {
 };
 
 export const deleteIntervention = async (id) => { 
-    let data = await api.delete(`Intervencion/${id}`);
+    let data = await api.delete(`Intervencion?/${id}`);
     return data;
 };
 

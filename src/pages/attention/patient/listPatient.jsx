@@ -6,6 +6,7 @@ import { useQuery } from 'react-query'
 import { getPatients } from '../../../services/patientService'
 import { getIdUser } from '../../../services/getUserId'
 import { deletePatiente } from '../../../services/patientService'
+import UpdatePatient from './actions/updatePatient'
 const listPatient = () => {
     const {data,isLoading,isError} = useQuery('paciente',getPatients)
     
@@ -84,7 +85,9 @@ const listPatient = () => {
                                                 <td>{patient.apellido1}</td>
                                                 <td>{patient.apellido2}</td>
                                                 <td>{patient.edad}</td>
-                                                <td><Button onClick={()=>showDeleteWaring(patient.iD_Paciente)} variant='danger'>Eliminar</Button></td>
+                                                <td>
+                                                    <UpdatePatient props = {patient}/>
+                                                    <Button size='sm' onClick={()=>showDeleteWaring(patient.iD_Paciente)} variant='danger'>Eliminar</Button></td>
                                             </tr>
                                         )
                                     ):(null)

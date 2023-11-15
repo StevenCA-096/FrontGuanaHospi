@@ -16,3 +16,11 @@ export const deletePatiente = async (id) => {
     let data = await api.delete(`paciente/${id}?idUsuario=${getIdUser()}`);
     return data;
 };
+
+export const updatePatientSe = async (patient) => { 
+  
+
+    let data = await api.put(`Intervencion?idUsuario=${getIdUser()}`,patient).then(result => result.data);
+    
+    return data;
+};

@@ -1,20 +1,29 @@
-import { React, useRef, useState } from 'react'
-import { useMutation, QueryClient, useQuery } from 'react-query';
+import React, { useState,useRef } from 'react'
+import { useQuery,useMutation,QueryClient } from 'react-query';
 import { Form, Button, Modal, Row, Col, Alert } from 'react-bootstrap';
-import Select from 'react-select';
-import moment from 'moment-timezone';
 import Swal from 'sweetalert2';
-import { createIntervention } from '../../../../services/interventionService';
+import Select from 'react-select';
 import { getDoctors } from '../../../../services/doctorService';
 import { getillness } from '../../../../services/illnessService';
 import { getInterventionTypes } from '../../../../services/interventionTypeService';
 import { getPatients } from '../../../../services/patientService';
-const addIntervention = () => {
+import { updateInterventionSe } from '../../../../services/interventionService';
+import { useEffect } from 'react';
+const updateIntervention = (props) => {
     const queryClient = new QueryClient();
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    
+    const [interventionProps,setInterventionProps] = useState(null);
+
+    const open = ()=> {
+        handleShow()
+        setInterventionProps(props.props)
+    }
 
     const { data: doctorsList, isLoading: doctorsLoading, isError: doctorsError } = useQuery('Doctor',getDoctors);
     const { data: illnessList, isLoading: ilnessLoading, isError: illnessError } = useQuery('Enfermedad',getillness);
@@ -38,12 +47,13 @@ const addIntervention = () => {
     }
 
     let optionsDoctor = []
-    if (doctorsList) {
-        optionsDoctor = doctorsList.map((doctor) => ({
-            value: doctor.iD_Doctor,
-            label: doctor.nombreD + " " + doctor.apellido1
-        }));
-    }
+        if (doctorsList) {
+            optionsDoctor = doctorsList.map((doctor) => ({
+                value: doctor.iD_Doctor,
+                label: doctor.nombreD + " " + doctor.apellido1
+            }));
+            
+        }
 
     let optionsIllness = []
     if (illnessList) {
@@ -51,29 +61,25 @@ const addIntervention = () => {
             value: illess.id_Enfermedad,
             label: illess.nombre
         }));
-        
+       
     }
-
-
-
-    const currentDateTime = moment().tz('GMT-6').format('YYYY-MM-DDTHH:mm');;
 
     const interventionDate = useRef()
     const prescription = useRef()
 
-    const [typeIntervention, setTypeIntervention] = useState()
-    const [illness, setIllness] = useState()
-    const [patient, setPatient] = useState()
-    const [doctor, setDoctor] = useState()
+    const [typeIntervention, setTypeIntervention] = useState(null)
+    const [illness, setIllness] = useState(null)
+    const [patient, setPatient] = useState(null)
+    const [doctor, setDoctor] = useState(null)
 
-    const createInterventionMutation = useMutation("intervencion", createIntervention,
+    const updateInterventionMutation = useMutation("intervencion", updateInterventionSe,
         {
             onSettled: () => queryClient.invalidateQueries("Intervencion"),
             mutationKey: "Intervencion",
             onSuccess: () => {
                 Swal.fire(
                     'Registro agregado!',
-                    'El registro de la intervencion fue creado',
+                    'El registro de la intervencion fue actualizado',
                     'success'
                 )
                 setTimeout(() => {
@@ -82,22 +88,25 @@ const addIntervention = () => {
             }
         })
 
-        const save = async() =>{
-            let newInterevention = {
-                fecha_intervencion: interventionDate.current.value,
-                prescripcion: prescription.current.value,
-                iD_TipoIntervencion: typeIntervention,
-                id_enfermedad:illness,
-                id_paciente:patient,
-                id_doctor:doctor
-            }
-            await createInterventionMutation.mutateAsync(newInterevention)
+    const save = async() =>{
+        
+        let newInterevention = {
+            iD_Intervencion:interventionProps.iD_Intervencion,
+            fecha_intervencion: interventionDate.current.value,
+            prescripcion: prescription.current.value,
+            iD_TipoIntervencion: typeIntervention ?(typeIntervention):(interventionOptions.filter((option)=>option.label == interventionProps.nombreTi)[0].value),
+            id_enfermedad:illness?(illness):(optionsIllness.filter((option)=>option.label == interventionProps.nombreE)[0].value),
+            id_paciente:patient?(patient):(patientOptions.filter((option)=>option.label == interventionProps.nombreP)[0].value),
+            id_doctor:doctor?(doctor):(optionsDoctor.filter((option)=>option.label == interventionProps.nombreD)[0].value)
         }
-    
-    return (
-        <>
-            <Button variant="primary" onClick={handleShow}>
-                Agregar intervencion
+        
+        await updateInterventionMutation.mutateAsync(newInterevention)
+    }
+
+  return (
+    <>
+            <Button variant="primary" onClick={open} size='sm'>
+                Editar
             </Button>
 
             <Modal
@@ -108,20 +117,22 @@ const addIntervention = () => {
                 size='lg'
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Agregar intervencion</Modal.Title>
+                    <Modal.Title>Editar</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    {
+                        interventionProps?(
+                            <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
                                 <Form.Label>Fecha de intervencion</Form.Label> {" "}
-                                <input type="datetime-local" defaultValue={currentDateTime} ref={interventionDate}/>
+                                <input type="datetime-local"  defaultValue={interventionProps.fecha_Intervencion}/>
                             </Form.Group>
                         </Row>
                         <Row>
                             <Form.Group a s={Col} controlId="formGridPassword">
                                 <Form.Label>Prescripcion</Form.Label>
-                                <Form.Control type="text" placeholder="Ingrese la preescripcion" ref={prescription}/>
+                                <Form.Control type="text" placeholder="Ingrese la preescripcion" defaultValue={interventionProps.prescripcion}/>
                             </Form.Group>
                         </Row>
                         <Row>
@@ -132,6 +143,10 @@ const addIntervention = () => {
                                         placeholder='Seleccione'
                                         options={interventionOptions}
                                         onChange={(selected)=> setTypeIntervention(selected.value)}
+                                        defaultValue={
+                                            interventionOptions.filter((option)=>option.label == interventionProps.nombreTi)
+                                        }
+                                        
                                     ></Select>
                                 </Form.Group>
                             </Col>
@@ -144,6 +159,10 @@ const addIntervention = () => {
                                                 placeholder='Seleccione'
                                                 options={optionsIllness}
                                                 onChange={(selected)=> setIllness(selected.value)}
+                                                defaultValue={
+                                                    optionsIllness.filter((option)=>option.label == interventionProps.nombreE)
+                                                }
+                                            
                                             ></Select>
                                         </Form.Group>
                                     ) : ("")
@@ -159,6 +178,10 @@ const addIntervention = () => {
                                         placeholder='Seleccione'
                                         options={patientOptions}
                                         onChange={(selected)=> setPatient(selected.value)}
+                                        defaultValue={
+                                            patientOptions.filter((option)=>option.label == interventionProps.nombreP)
+                                        }
+                                        
                                     ></Select>
                                 </Form.Group>
                             </Col>
@@ -172,6 +195,10 @@ const addIntervention = () => {
                                                 placeholder='Seleccione'
                                                 options={optionsDoctor}
                                                 onChange={(selected)=> setDoctor(selected.value)}
+                                                defaultValue={
+                                                    optionsDoctor.filter((option)=>option.label == interventionProps.nombreD)
+                                                }
+                                                
                                             ></Select>
                                         </Form.Group>
                                     </Col>
@@ -182,6 +209,9 @@ const addIntervention = () => {
                         </Row>
 
                     </Form>
+                        ):("")
+                    }
+                    
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -191,7 +221,7 @@ const addIntervention = () => {
                 </Modal.Footer>
             </Modal>
         </>
-    )
+  )
 }
 
-export default addIntervention
+export default updateIntervention

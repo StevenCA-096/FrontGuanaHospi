@@ -6,11 +6,10 @@ import AddIntervention from './actions/addIntervention'
 import { useQuery } from 'react-query'
 import { getIntervention } from '../../../services/interventionService'
 import './listIntervention.css'
+import UpdateIntervention from './actions/updateIntervention'
 const listIntervention = () => {
     const {data,isLoading,isError} = useQuery('Intervencion',getIntervention)
-    if (data) {
-        console.log(data)
-    }
+    
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -65,7 +64,7 @@ const listIntervention = () => {
                 </Row>
                 <Row>
                     <Col lg={12}>
-                        <Table striped variant='light' size='sm'>
+                        <Table striped variant='light' size='lg'>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -90,7 +89,10 @@ const listIntervention = () => {
                                             <td>{intervention.nombreP}</td>
                                             <td>{intervention.nombreD}</td>
                                             <td>{intervention.nombreTi}</td>
-                                            <td><Button variant='danger' onClick={() => showDeleteWaring(intervention.iD_Intervencion)}>Eliminar</Button></td>
+                                            <td>
+                                                <UpdateIntervention props={intervention}/>
+                                                <Button size='sm' variant='danger' onClick={() => showDeleteWaring(intervention.iD_Intervencion)}>Eliminar</Button>
+                                            </td>
                                         </tr>
                                         )
                                     ):(null)

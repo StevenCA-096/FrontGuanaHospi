@@ -24,14 +24,10 @@ export const deleteIntervention = async (id) => {
     return data;
 };
 
-export const updateIntervention = async (Intervention) => { 
+export const updateInterventionSe = async (Intervention) => { 
     console.log(Intervention)
-    const id = Intervention.id;
-    let InterventionEdit = {
-        name: Intervention.name,
-    }
 
-    let data = await api.put(`Intervencion/${id}`,InterventionEdit).then(result => result.data);
+    let data = await api.put(`Intervencion?idUsuario=${getIdUser()}`,Intervention).then(result => result.data);
     
     return data;
 };

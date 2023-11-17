@@ -89,8 +89,8 @@ const listPatient_Unit = () => {
                                                 <td>{pa_unit.nombre_Paciente}</td>
                                                 <td>{pa_unit.id_unidad}</td>
                                                 <td>{pa_unit.nombre_Unidad}</td>
-                                                <td>{moment(pa_unit.fecha_ingreso).format('L')}</td>
-                                                <td>{pa_unit.fecha_salida}</td>
+                                                <td>{moment(pa_unit.fecha_ingreso).format('LLL')}</td>
+                                                <td>{moment(pa_unit.fecha_salida).format('LLL')}</td>
                                                 <td>
                                                     <UpdatePatientUnit props={pa_unit}/>
                                                     <Button onClick={()=>showDeleteWaring(pa_unit.id_paciente_unidad)} variant='danger' size='sm'  >Eliminar</Button>

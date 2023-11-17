@@ -7,6 +7,7 @@ import { useQuery } from 'react-query'
 import { getIntervention } from '../../../services/interventionService'
 import './listIntervention.css'
 import UpdateIntervention from './actions/updateIntervention'
+import moment from 'moment-timezone'
 const listIntervention = () => {
     const {data,isLoading,isError} = useQuery('Intervencion',getIntervention)
     
@@ -83,7 +84,7 @@ const listIntervention = () => {
                                         data.map((intervention) => 
                                         <tr key={intervention.iD_Intervencion}>
                                             <td>{intervention.iD_Intervencion}</td>
-                                            <td>{intervention.fecha_Intervencion.toLocaleString()}</td>
+                                            <td>{moment(intervention.fecha_Intervencion).format('LLL')}</td>
                                             <td>{intervention.prescripcion}</td>
                                             <td>{intervention.nombreE}</td>
                                             <td>{intervention.nombreP}</td>

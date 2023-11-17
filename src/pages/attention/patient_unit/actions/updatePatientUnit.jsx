@@ -106,7 +106,7 @@ const updatePatientUnit = (props) => {
                                 <Row>
                                     <Col>
                                         <Form.Group className="mb-3" controlId="formGridAddress1">
-                                            <Form.Label>Paciente atendido</Form.Label>
+                                            <Form.Label>Paciente ingresado</Form.Label>
                                             <Select
                                                 placeholder='Seleccione'
                                                 options={patientOptions}
@@ -119,7 +119,7 @@ const updatePatientUnit = (props) => {
 
                                     <Col>
                                         <Form.Group className="mb-3" controlId="formGridAddress1">
-                                            <Form.Label>Doctor a cargo</Form.Label>
+                                            <Form.Label>Unidad a la que sera ingresado:</Form.Label>
                                             <Select
                                                 placeholder='Seleccione'
                                                 options={optionsUnit}

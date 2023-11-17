@@ -24,11 +24,11 @@ const updatePatient = (props) => {
 
 
     let optionsSelect = []
-    for (let i = 0; i < 110; i++) {
+    for (let i = 1; i < 110; i++) {
         optionsSelect.push({ value: i + 1, label: (i + 1) })
     }
 
-    const [age, setAge] = useState();
+    const [age, setAge] = useState(null);
     const secureNumber = useRef();
     const name = useRef();
     const lastname1 = useRef();
@@ -49,16 +49,18 @@ const updatePatient = (props) => {
                 }, 2000);
             }
         })
-
+console.log(props)
     const save = () => {
-        let newPatient = {
+        let editPatient = {
+            idPaciente: patientProps.iD_Paciente,
             numSeguro: secureNumber.current.value,
             nombre: name.current.value,
             apellido1: lastname1.current.value,
             apellido2: lastname2.current.value,
-            age: age
+            edad: age?(age):(patientProps.edad)
         }
-        updatePatientMutation.mutateAsync(newPatient)
+        console.log(patientProps)
+        updatePatientMutation.mutateAsync(editPatient)
     }
 
     if (patientProps) {

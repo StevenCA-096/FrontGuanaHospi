@@ -79,8 +79,8 @@ const listUnits = () => {
                   data.map((unit) => 
                     <tr key={unit.iD_Unidad}>
                       <td>{unit.iD_Unidad}</td>
-                      <td>{unit.codigo}</td>
-                      <td>{unit.nombre}</td>
+                      <td>{unit.codigoU}</td>
+                      <td>{unit.nombreU}</td>
                       <td>{unit.planta}</td>
                       <td>
                       <UpdateUnit props={unit}/>

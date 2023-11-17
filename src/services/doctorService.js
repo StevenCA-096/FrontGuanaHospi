@@ -25,15 +25,9 @@ export const deleteDoctor = async (id) => {
 
 export const updateDoctorS = async (doctorEdit) => { 
     console.log(doctorEdit  )
-    let doctorToApi = { 
-        codigo:doctorEdit.codigo,
-        nombreD:doctorEdit.nombreD,
-        apellido1:doctorEdit.apellido1,
-        apellido2:doctorEdit.apellido2,
-        iD_Especialidad:doctorEdit.iD_Especialidad
-    }
+   
 
-    let data = await api.put(`doctor${doctorEdit.id}`,doctorToApi).then(result => result.data);
+    let data = await api.put(`doctor?idUsuario=${getIdUser()}`,doctorEdit).then(result => result.data);
     
 
     return data;

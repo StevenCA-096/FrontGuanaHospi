@@ -12,6 +12,7 @@ import { QueryClient,QueryClientProvider } from 'react-query'
 import ListIntervention from './pages/attention/intervention/listIntervention.jsx'
 import Login from './pages/user/login.jsx'
 import ListPatient from './pages/attention/patient/listPatient.jsx'
+import ListPatient_Unit from './pages/attention/patient_unit/listPatient_Unit.jsx'
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
@@ -25,7 +26,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/listSymptoms" element={<ListSymptom />}/>
       <Route path="/listIntervention" element={<ListIntervention />}/>
       <Route path="/listPatient" element={<ListPatient />}/>
+      <Route path="/listPatient_Unit" element={<ListPatient_Unit />}/>
 
+      
       <Route path="/userProfile" element={<UserProfile />}/>
       <Route path="/login" element={<Login />}/>
       </Route>

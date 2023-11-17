@@ -19,7 +19,7 @@ const updateUnit = (props) => {
     const [unit, setUnit] = useState();
 
     const open = () => { setUnit(props.props); handleShow(); }
-    console.log(props)
+    
 
     const { data, isLoading, isError } = useQuery('doctor', getDoctors)
 
@@ -42,8 +42,8 @@ const updateUnit = (props) => {
 
     const code = useRef()
     const name = useRef()
-    const floorNumber = useRef()
-    const [idDoctor, setIdDoctor] = useState()
+    const [floorNumber,setFloorNumber] = useState(null)
+    const [idDoctor, setIdDoctor] = useState(null)
 
     const updateUnitMutation = useMutation("unidad", updateUnitS,
         {
@@ -52,7 +52,7 @@ const updateUnit = (props) => {
             onSuccess: () => {
                 Swal.fire(
                     'Registro actualizado!',
-                    'El registro de la planta fue editado',
+                    'El registro de la unidad fue editado',
                     'success'
                 )
                 setTimeout(() => {
@@ -63,11 +63,11 @@ const updateUnit = (props) => {
 
     const saveChanges = () => {
         let editUnit = {
-            id: unit.iD_Unidad,
+            iD_Unidad: unit.iD_Unidad,
             codigo: code.current.value,
             nombre: name.current.value,
-            planta: floorNumber.current.value,
-            iD_Doctor: idDoctor
+            planta: floorNumber?(floorNumber):(unit.planta),
+            iD_Dcotor: idDoctor?(idDoctor):(unit.doctor_id)
         }
         updateUnitMutation.mutateAsync(editUnit)
     }
@@ -87,9 +87,7 @@ const updateUnit = (props) => {
         },
     ]
 
-    if (unit) {
-        setIdDoctor(unit.planta)
-    }
+    
     return (
         <>
             <Button variant="primary" onClick={open} size='sm'>
@@ -112,23 +110,24 @@ const updateUnit = (props) => {
                             <Row className="mb-3">
                                 <Form.Group as={Col} controlId="formGridEmail">
                                     <Form.Label>Codigo</Form.Label>
-                                    <Form.Control type="number" placeholder="Ingrese el codigo" ref={code} defaultValue={unit.codigo} />
+                                    <Form.Control type="number" placeholder="Ingrese el codigo" ref={code} defaultValue={unit.codigoU} />
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridPassword">
                                     <Form.Label>Nombre</Form.Label>
                                     <Form.Control
-                                        defaultValue={unit.nombre}
+                                        defaultValue={unit.nombreU}
                                         type="text" placeholder="Ingrese el nombre" ref={name} />
                                 </Form.Group>
                             </Row>
                             <Row className="mb-3">
-                                <Form.Group className="mb-3" controlId="formGridAddress1" ref={floorNumber}>
+                                <Form.Group className="mb-3" controlId="formGridAddress1">
                                     <Form.Label>Planta</Form.Label>
                                     <Select
                                         placeholder='Seleccione la planta'
                                         options={optionsFloor}
-                                        
+                                        onChange={(selected)=>setFloorNumber(selected.value)}
+                                        defaultValue={optionsFloor.filter((option)=> option.value == unit.planta)}
                                     >
                                     </Select>
                                 </Form.Group>
@@ -141,7 +140,7 @@ const updateUnit = (props) => {
                                     placeholder='Seleccione el doctor'
                                     options={optionsSelect}
                                     onChange={(selected) => setIdDoctor(selected.value)}
-
+                                    defaultValue={optionsSelect.filter((option)=>option.value == unit.doctor_id)}
                                 ></Select>
                             </Form.Group>
 

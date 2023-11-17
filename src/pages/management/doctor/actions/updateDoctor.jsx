@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const updateDoctorModal = (props) => {
     const queryClient = new QueryClient();
     const [show, setShow] = useState(false);
-    console.log(props)
+    
     const [doctor,setDoctor] = useState();
     
     const handleClose = () => setShow(false);
@@ -62,18 +62,18 @@ const updateDoctorModal = (props) => {
         }
     }
 
-    const saveChanges = () =>{
+    const saveChanges = async() =>{
         
         if (isValid) {
             let editDoctor = {
-                id: doctor.iD_Doctor,
+                idDoctor: doctor.iD_Doctor,
                 codigo: code.current.value,
-                nombreD: name.current.value,
+                nombre: name.current.value,
                 apellido1: lastname1.current.value,
                 apellido2: lastname2.current.value,
-                iD_Especialidad: idSpeciality
+                iDEspecialidad: idSpeciality?(idSpeciality):(doctor.especialidad.iD_Especialidad)
             }
-            updateDoctorMutation.mutateAsync(editDoctor)
+            await updateDoctorMutation.mutateAsync(editDoctor)
         }else{
             console.log("")
         }
@@ -132,7 +132,7 @@ const updateDoctorModal = (props) => {
                             placeholder='Seleccione la especialidad' 
                             options={optionsSelect}
                             onChange={(selected) => setIdSpeciality(selected.value)}
-                            defaultValue={doctor.especialidad.iD_Especialidad}
+                            defaultValue={optionsSelect.filter((option)=>option.label == doctor.especialidad.nombre)}
                             ></Select>
                         </Form.Group>
                         {doctor.especialidad.iD_Especialidad}

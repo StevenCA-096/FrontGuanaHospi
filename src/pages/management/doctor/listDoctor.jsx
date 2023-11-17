@@ -7,10 +7,6 @@ import UpdateDoctorModal from './actions/updateDoctor'
 import Swal from 'sweetalert2'
 const ListDoctor = () => {
    const {data,isLoading,isError} = useQuery('doctor',getDoctors)
-
-  if(data){
-    console.log(data)
-  }
   
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -88,7 +84,7 @@ const ListDoctor = () => {
                         <td>{doctor.nombreD}</td>
                         <td>{doctor.apellido1}</td>
                         <td>{doctor.apellido2}</td>
-                        <td>{doctor.especialidad.nombreE}</td>
+                        <td>{doctor.especialidad.nombre}</td>
                         <td>
                           <UpdateDoctorModal props={doctor}/>
                           <Button onClick={()=>showDeleteWaring(doctor.iD_Doctor)} size='sm' variant='danger'>Eliminar</Button>

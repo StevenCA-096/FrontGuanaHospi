@@ -50,7 +50,7 @@ export const menuItemsLogged = [
             },
             {
                 title: 'Ingresar Paciente',
-                url: '/listPatient',
+                url: '/listPatient_Unit',
             },
         ],
     },

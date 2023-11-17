@@ -126,13 +126,13 @@ const updateIntervention = (props) => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
                                 <Form.Label>Fecha de intervencion</Form.Label> {" "}
-                                <input type="datetime-local"  defaultValue={interventionProps.fecha_Intervencion}/>
+                                <input type="datetime-local"  defaultValue={interventionProps.fecha_Intervencion} ref={interventionDate}/>
                             </Form.Group>
                         </Row>
                         <Row>
                             <Form.Group a s={Col} controlId="formGridPassword">
                                 <Form.Label>Prescripcion</Form.Label>
-                                <Form.Control type="text" placeholder="Ingrese la preescripcion" defaultValue={interventionProps.prescripcion}/>
+                                <Form.Control type="text" placeholder="Ingrese la preescripcion" defaultValue={interventionProps.prescripcion} ref={prescription}/>
                             </Form.Group>
                         </Row>
                         <Row>

@@ -1,4 +1,5 @@
 import api from "../api/api";
+import { getIdUser } from "./getUserId";
 
 export const getUnits = async () => { 
     let data = await api.get('Unidad').then(result => result.data);
@@ -24,13 +25,8 @@ export const deleteUnits = async (id) => {
 };
 
 export const updateUnitS = async (UnitsEdit) => { 
-    let unitEditToApi = {
-        codigo: UnitsEdit.codigo,
-        nombre: UnitsEdit.nombre,
-        planta: UnitsEdit.planta,
-        iD_Doctor: UnitsEdit.iD_Doctor
-    }
-    let data = await api.put(`Unidad/${UnitsEdit.id}`,unitEditToApi).then(result => result.data);
+    
+    let data = await api.put(`Unidad?idUsuario=${getIdUser()}`,UnitsEdit).then(result => result.data);
     
     return data;
 };

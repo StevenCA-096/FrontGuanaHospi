@@ -20,7 +20,7 @@ export const deletePatiente = async (id) => {
 export const updatePatientSe = async (patient) => { 
   
 
-    let data = await api.put(`Intervencion?idUsuario=${getIdUser()}`,patient).then(result => result.data);
+    let data = await api.put(`paciente?idUsuario=${getIdUser()}`,patient).then(result => result.data);
     
     return data;
 };

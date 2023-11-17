@@ -41,7 +41,7 @@ const addDoctor = () => {
                     'success'
                 )
                 setTimeout(() => {
-                    //window.location.reload()
+                    window.location.reload()
                 }, 2000);
             }
         })
@@ -64,7 +64,7 @@ const addDoctor = () => {
         if (isValid) {
             let newDoctor = {
                 codigo: code.current.value,
-                nombreD: name.current.value,
+                nombre: name.current.value,
                 Apellido1: lastname1.current.value,
                 Apellido2: lastname2.current.value,
                 iD_Especialidad: idSpeciality

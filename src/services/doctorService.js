@@ -14,7 +14,7 @@ export const getDoctorById = async (id,state) => {
 };
 
 export const createDoctor = async (doctor) => { 
-    let data = await api.post(`doctor?idUsuario=${getIdUser()}`,doctor).then(result => result.data);
+    let data = await api.post(`Doctor?idUsuario=${getIdUser()}`,doctor).then(result => result.data);
     return data;
 };
 

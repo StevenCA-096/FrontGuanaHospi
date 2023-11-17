@@ -15,12 +15,12 @@ export const getUnitById = async (id,state) => {
 };
 
 export const createUnit = async (Units) => { 
-    let data = await api.post('Unidad',Units).then(result => result.data);
+    let data = await api.post(`Unidad?idUsuario=${getIdUser()}`,Units).then(result => result.data);
     return data;
 };
 
 export const deleteUnits = async (id) => { 
-    let data = await api.delete(`Unidad/${id}`);
+    let data = await api.delete(`Unidad?id=${id}&idUsuario=${getIdUser()}`);
     return data;
 };
 

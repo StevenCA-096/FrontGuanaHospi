@@ -69,7 +69,7 @@ console.log(props)
 
     return (
         <>
-            <Button variant="primary" onClick={open} size='sm'>
+            <Button variant="primary"  onClick={open} size='sm'>
                 Editar
             </Button>
 
@@ -80,7 +80,7 @@ console.log(props)
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Agregar paciente</Modal.Title>
+                    <Modal.Title>Editar ingreso del paciente</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {

@@ -8,9 +8,13 @@ import { getIntervention } from '../../../services/interventionService'
 import './listIntervention.css'
 import UpdateIntervention from './actions/updateIntervention'
 import moment from 'moment-timezone'
+
 const listIntervention = () => {
     const {data,isLoading,isError} = useQuery('Intervencion',getIntervention)
-    
+
+    moment.tz.setDefault('America/Costa_Rica');
+
+
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success',
@@ -69,8 +73,8 @@ const listIntervention = () => {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>FECHA DE INTERVENCION</th>
-                                    <th>PREESCRIPCION</th>
+                                    <th>FECHA DE INTERVENCIÓN</th>
+                                    <th>PREESCRIPCIÓN</th>
                                     <th>ENFERMEDAD</th>
                                     <th>PACIENTE ATENDIDO</th>
                                     <th>DOCTOR ENCARGADO</th>

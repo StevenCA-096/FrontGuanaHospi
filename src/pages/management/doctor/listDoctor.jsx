@@ -66,7 +66,7 @@ const ListDoctor = () => {
             <thead>
               <tr>
               <th>ID</th>
-              <th>CODIGO</th>
+              <th>CÓDIGO</th>
               <th>NOMBRE</th>
               <th>PRIMER APELLIDO </th>
               <th>SEGUNDO APELLIDO</th>

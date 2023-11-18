@@ -104,8 +104,8 @@ const addDoctor = () => {
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Codigo</Form.Label>
-                                <Form.Control type="number" placeholder="Ingrese el nombre del doctor" ref={code}/>
+                                <Form.Label>Código</Form.Label>
+                                <Form.Control type="number" placeholder="Ingrese el código del doctor" ref={code}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPassword">

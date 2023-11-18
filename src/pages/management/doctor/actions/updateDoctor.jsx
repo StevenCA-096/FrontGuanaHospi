@@ -105,8 +105,8 @@ const updateDoctorModal = (props) => {
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Codigo</Form.Label>
-                                <Form.Control type="number" placeholder="Ingrese el codigo" ref={code} defaultValue={doctor.codigo}/>
+                                <Form.Label>Código</Form.Label>
+                                <Form.Control type="number" placeholder="Ingrese el código" ref={code} defaultValue={doctor.codigo}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPassword">

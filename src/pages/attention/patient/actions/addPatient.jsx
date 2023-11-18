@@ -79,7 +79,7 @@ const addPatient = () => {
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Numero de seguro</Form.Label>
+                                <Form.Label>Número de seguro</Form.Label>
                                 <Form.Control type="number" placeholder="Ingrese el seguro del paciente" ref={secureNumber}/>
                             </Form.Group>
 

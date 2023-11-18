@@ -93,8 +93,8 @@ const addUnit = () => {
                     <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Codigo</Form.Label>
-                                <Form.Control type="number" placeholder="Ingrese codigo" ref={code}/>
+                                <Form.Label>Código</Form.Label>
+                                <Form.Control type="number" placeholder="Ingrese código" ref={code}/>
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridPassword">

@@ -66,7 +66,7 @@ const listPatient = () => {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>NUMERO DE SEGURO</th>
+                                    <th>NÚMERO DE SEGURO</th>
                                     <th>NOMBRE</th>
                                     <th>PRIMER APELLIDO</th>
                                     <th>SEGUNDO APELLIDO</th>

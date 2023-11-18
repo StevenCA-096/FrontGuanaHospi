@@ -67,7 +67,7 @@ const listUnits = () => {
             <thead>
               <tr>
               <th>ID</th>
-              <th>CODIGO</th>
+              <th>CÓDIGO</th>
               <th>NOMBRE</th>
               <th>PLANTA </th>
               <th>ACCIONES</th>    

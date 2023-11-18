@@ -131,7 +131,7 @@ const updateIntervention = (props) => {
                             <Form>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridEmail">
-                                <Form.Label>Fecha de intervencion</Form.Label> {" "}
+                                <Form.Label>Fecha de intervención</Form.Label> {" "}
                                 <input type="datetime-local"  defaultValue={interventionProps.fecha_Intervencion} ref={interventionDate}/>
                             </Form.Group>
                         </Row>

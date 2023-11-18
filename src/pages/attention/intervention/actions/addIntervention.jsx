@@ -103,7 +103,7 @@ const addIntervention = () => {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Agregar intervencion
+                Agregar intervención
             </Button>
 
             <Modal

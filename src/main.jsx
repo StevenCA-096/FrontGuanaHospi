@@ -13,6 +13,9 @@ import ListIntervention from './pages/attention/intervention/listIntervention.js
 import Login from './pages/user/login.jsx'
 import ListPatient from './pages/attention/patient/listPatient.jsx'
 import ListPatient_Unit from './pages/attention/patient_unit/listPatient_Unit.jsx'
+import Reports from './pages/reports/reports.jsx'
+import Historial from './pages/reports/historial.jsx'
+
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
@@ -27,7 +30,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/listIntervention" element={<ListIntervention />}/>
       <Route path="/listPatient" element={<ListPatient />}/>
       <Route path="/listPatient_Unit" element={<ListPatient_Unit />}/>
-
+      <Route path="/reports" element={<Reports />}/>
+      <Route path="/historial" element={<Historial />}/>
       
       <Route path="/userProfile" element={<UserProfile />}/>
       <Route path="/login" element={<Login />}/>

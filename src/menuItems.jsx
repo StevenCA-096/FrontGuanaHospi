@@ -95,7 +95,17 @@ export const menuItemsLogged = [
     },
     {
         title: 'Reportes',
-        url: '/login',
+        submenu: [
+            {
+                title: 'Reportes',
+                url: '/reports'
+            },
+    
+            {
+                title: 'Historial de acciones',
+                url: '/historial',
+            },
+        ],
     },
     {
         title: 'Perfil',

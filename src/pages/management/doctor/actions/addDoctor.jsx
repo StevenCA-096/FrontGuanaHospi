@@ -43,6 +43,16 @@ const addDoctor = () => {
                 setTimeout(() => {
                     window.location.reload()
                 }, 2000);
+            },
+            onError:() => {
+                Swal.fire(
+                    'No permitido!',
+                    'NO CUENTA CON PERMISOS PARA REALIZAR ESTA ACCION',
+                    'error'
+                )
+                setTimeout(() => {
+                    window.location.reload()
+                }, 2000);
             }
         })
 
@@ -136,9 +146,9 @@ const addDoctor = () => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Cerrar
                     </Button>
-                    <Button variant="primary" onClick={saveDoctor}>Understood</Button>
+                    <Button variant="primary" onClick={saveDoctor}>Guardar</Button>
                 </Modal.Footer>
             </Modal>
         </>

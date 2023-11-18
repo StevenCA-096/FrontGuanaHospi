@@ -45,6 +45,12 @@ const updateDoctorModal = (props) => {
                 setTimeout(() => {
                     window.location.reload()
                 }, 2000);
+            },onError:() => {
+                Swal.fire(
+                    'No permitido!',
+                    'NO CUENTA CON PERMISOS PARA REALIZAR ESTA ACCION',
+                    'error'
+                )           
             }
         })
 
@@ -135,7 +141,7 @@ const updateDoctorModal = (props) => {
                             defaultValue={optionsSelect.filter((option)=>option.label == doctor.especialidad.nombre)}
                             ></Select>
                         </Form.Group>
-                        {doctor.especialidad.iD_Especialidad}
+                        
                         {
                                     isValid == false? (
                                         <Alert variant={'danger'}>
@@ -153,7 +159,7 @@ const updateDoctorModal = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Cerrar
                     </Button>
-                    <Button variant="primary" onClick={saveChanges} disabled={!isValid}>Guardar cambions</Button>
+                    <Button variant="primary" onClick={saveChanges} disabled={!isValid}>Guardar cambios</Button>
                 </Modal.Footer>
             </Modal>
         </>

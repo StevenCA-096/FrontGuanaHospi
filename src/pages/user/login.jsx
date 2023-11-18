@@ -19,6 +19,7 @@ const login = () => {
                 case "User not found": Swal.fire('El usuario no existe','El correo ingresado no se encuentra registrado','warning');break;
                 case "Wrong password":Swal.fire('La contrasena no coincide','La contrasena para el correo indicado no es correcta','error');break;
                 default:
+                    sessionStorage.setItem('bearer',token)
                     getLoginInfo(credentials).then((user)=>{
                         sessionStorage.setItem('user',JSON.stringify(user))
                         window.location='/'

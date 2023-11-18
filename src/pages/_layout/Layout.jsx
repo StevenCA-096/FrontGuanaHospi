@@ -35,21 +35,7 @@ export const Layout = () => {
 
                 </Col>
               </Row>
-              <Row className='socialNetworks'>
-                <Col>
-                  <h5>Nuestras redes sociales</h5>
-                </Col>
-              </Row>
-
-              <Row className='socialNetworkImgs'>
-                <Col>
-                  <img src="" alt="" className='socialNetworkImg' />
-                
-                  <img src="" alt="" className='socialNetworkImg' />
-                
-                  <img src="" alt="" className='socialNetworkImg' />
-                </Col>
-              </Row>
+              
               <Row>
 
               </Row>

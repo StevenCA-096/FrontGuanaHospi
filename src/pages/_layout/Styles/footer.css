@@ -6,6 +6,9 @@ footer {
   background-position: initial;
   position: relative;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .generalInfoF{

@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'https://localhost:7280/api/',
+    baseURL: 'https://t259rltw-7280.use2.devtunnels.ms/api/',
     headers: {
-      Authorization:`Bearer ${localStorage.getItem('bearer')}`,
+      Authorization:`Bearer ${sessionStorage.getItem('bearer')}`,
       
     }
   });

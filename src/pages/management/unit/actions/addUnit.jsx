@@ -41,6 +41,12 @@ const addUnit = () => {
                 setTimeout(() => {
                     window.location.reload()
                 }, 2000);
+            },onError:() => {
+                Swal.fire(
+                    'No permitido!',
+                    'NO CUENTA CON PERMISOS PARA REALIZAR ESTA ACCION',
+                    'error'
+                )           
             }
         })
 

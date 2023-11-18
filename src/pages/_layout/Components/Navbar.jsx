@@ -1,4 +1,4 @@
-import { menuItems,menuItemsLogged } from '../../../menuItems';
+import { menuItems,menuItemsLogged,menuItemsGestion,menuItemsAtencion } from '../../../menuItems';
 import MenuItems from './MenuItems'
 //import navbarstyles from '../../../Styles/navbar.css'
 import { useEffect, useState } from 'react';
@@ -9,7 +9,12 @@ const Navbar = () => {
   let user = JSON.parse(sessionStorage.getItem('user'));
   console.log(user)
   if (user) {
-    menu = menuItemsLogged
+    switch (user.rol.nombreR){
+      case "Gestion": menu = menuItemsGestion;break;
+      case "Atencion": menu =  menuItemsAtencion;break;
+      case "Admin":menu = menuItemsLogged;break;
+    }
+    
   }else{
     menu = menuItems
   }

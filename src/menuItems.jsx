@@ -1,3 +1,62 @@
+export const menuItemsAtencion = [
+    {
+        title: 'Inicio',
+        url: '/',
+    },
+    
+    {
+        title: 'Atencion',
+        submenu: [
+            {
+                title: 'Intervenciones',
+                url: '/listIntervention'
+            },
+            {
+                title: 'Pacientes',
+                url: '/listPatient',
+            },
+            {
+                title: 'Ingresar Paciente',
+                url: '/listPatient_Unit',
+            },
+        ],
+    },
+   
+    {
+        title: 'Perfil',
+        url: '/userProfile',
+    },
+
+]
+
+export const menuItemsGestion = [
+    {
+        title: 'Inicio',
+        url: '/',
+    },
+    {
+        title: 'Gestion',
+        submenu: [
+            {
+                title: 'Doctores',
+                url: '/listDoctors'
+            },
+            {
+                title: 'Unidades',
+                url: '/listUnits',
+            },
+            
+        ],
+    },
+    
+    
+    {
+        title: 'Perfil',
+        url: '/userProfile',
+    },
+
+]
+
 export const menuItemsLogged = [
     {
         title: 'Inicio',
@@ -14,18 +73,6 @@ export const menuItemsLogged = [
                 title: 'Unidades',
                 url: '/listUnits',
             },
-            // {
-            //     title: 'Enfermedads',
-            //     url: '/listIlness',
-            // },
-            // {
-            //     title: 'Sintomas',
-            //     url: '/listSymptoms',
-            // },
-            // {
-            //     title: 'Especialidad',
-            //     url: '/listSymptoms',
-            // },
             
         ],
     },
@@ -36,14 +83,6 @@ export const menuItemsLogged = [
                 title: 'Intervenciones',
                 url: '/listIntervention'
             },
-            // {
-            //     title: 'Tipos de intervenciones',
-            //     url: '/listDoctors'
-            // },
-            // {
-            //     title: 'Pacientes',
-            //     url: '/listUnits',
-            // },
             {
                 title: 'Pacientes',
                 url: '/listPatient',
